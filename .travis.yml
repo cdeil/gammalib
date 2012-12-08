@@ -1,0 +1,17 @@
+# Continuous integration build specification for travis-ci.org
+
+language: cpp
+
+#compiler:
+#  - clang
+#  - gcc
+
+install:
+  - sudo apt-get -qq install cfitsio-dev python-dev swig
+  - ./autogen.sh
+  - ./configure
+  - make
+  - sudo make install
+
+script:
+  - make check
