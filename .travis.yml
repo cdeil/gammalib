@@ -6,12 +6,14 @@ compiler:
   - clang
   - gcc
 
-install:
-  - time sudo apt-get -qq install cfitsio-dev python-dev swig
+before_install:
+  - time sudo apt-get -qq install cfitsio-dev# python-dev swig
   - time ./autogen.sh
   - time ./configure
+
+install:
   - time make
-  - time sudo make install
 
 script:
+  - time sudo make install
   - time make check
