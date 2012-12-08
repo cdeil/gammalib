@@ -2,16 +2,16 @@
 
 language: cpp
 
-#compiler:
-#  - clang
-#  - gcc
+compiler:
+  - clang
+  - gcc
 
 install:
-  - sudo apt-get -qq install cfitsio-dev python-dev swig
-  - ./autogen.sh
-  - ./configure
-  - make
-  - sudo make install
+  - time sudo apt-get -qq install cfitsio-dev python-dev swig
+  - time ./autogen.sh
+  - time ./configure
+  - time make
+  - time sudo make install
 
 script:
-  - make check
+  - time make check
