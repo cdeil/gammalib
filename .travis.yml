@@ -12,8 +12,11 @@ before_install:
   - time ./configure
 
 install:
-  - time make
+  # Install phase can only take 10 mins, so time out after 9m here
+  - time timeout 9m make
 
 script:
+  # Finish make in case it timed out before
+  - time make
   - time sudo make install
   - time make check
