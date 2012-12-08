@@ -7,7 +7,7 @@ compiler:
   - gcc
 
 before_install:
-  - time sudo apt-get -qq install cfitsio-dev# python-dev swig
+  - time sudo apt-get -qq install cfitsio-dev
   - time ./autogen.sh
   - time ./configure
 
