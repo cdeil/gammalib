@@ -13,7 +13,10 @@ before_install:
 
 install:
   # Install phase can only take 10 mins, so time out after 9m here
-  - time timeout 9m make
+  #- time timeout 9m make
+  # This is a hack to always return 0, whether there is a timeout or not,
+  # to prevent travis from aborting for non-zero exit status.
+  - if [[ 0 -eq $(time timeout 9m make) ]]; then echo "dummy" ; fi
 
 script:
   # Finish make in case it timed out before
