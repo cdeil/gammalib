@@ -17,10 +17,12 @@ def test_radial_model(name, model, clobber=True):
     image = GSkymap("CAR", "CEL", ra, dec, -binsz, binsz, npix, npix, 1)
 
     # Fill the image
+    dummy_energy = GEnergy()
+    dummy_time = GTime()
     for pix in range(image.npix()):
         dir = image.pix2dir(pix)
         theta = center.dist(dir)
-        image[pix] = model.eval(theta)
+        image[pix] = model.eval(theta, dummy_energy, dummy_time)
 
     # Write it to file
     filename = name + '.fits'
@@ -47,6 +49,6 @@ if __name__ == '__main__':
     center.radec_deg(0.3, 0.1)
 
     # Test models
-    test_radial_model(name='gauss', model=GModelRadialGauss(center, 0.3))
-    test_radial_model(name='disk', model=GModelRadialDisk(center, 0.8))
-    test_radial_model(name='shell', model=GModelRadialShell(center, 0.5, 0.1))
+    test_radial_model(name='gauss', model=GModelSpatialRadialGauss(center, 0.3))
+    test_radial_model(name='disk', model=GModelSpatialRadialDisk(center, 0.8))
+    test_radial_model(name='shell', model=GModelSpatialRadialShell(center, 0.5, 0.1))
