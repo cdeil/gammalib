@@ -43,6 +43,8 @@
  =                                                                         =
  ==========================================================================*/
 
+namespace gammalib {
+
 /***********************************************************************//**
  * @brief Computes logarithm of gamma function
  *
@@ -82,7 +84,9 @@ double gammln(const double& x) {
  * @param[in] n_off Number of counts in the off region.
  * @param[in] alpha Ratio in background exposure on / off.
  ***************************************************************************/
-double li_ma_significance(const double& n_on, const double& n_off, const double& alpha) {
+double li_ma_significance(const double& n_on,
+                                 const double& n_off,
+                                 const double& alpha) {
 
   double n_sum = n_on + n_off;
   double temp = (alpha + 1) / n_sum;
@@ -92,4 +96,6 @@ double li_ma_significance(const double& n_on, const double& n_off, const double&
 
   double result = sign * std::sqrt(std::fabs(2 * (l + m)));
   return result;
+}
+
 }

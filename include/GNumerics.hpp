@@ -34,8 +34,13 @@
 /* __ Constants __________________________________________________________ */
 
 /* __ Prototypes _________________________________________________________ */
+namespace gammalib {
+
 double gammln(const double& x);
 
-double li_ma_significance(const double& n_on, const double& n_off, const double& alpha);
+double li_ma_significance(const double& n_on,
+                          const double& n_off,
+                          const double& alpha);
+}
 
 #endif /* GNUMERICS_HPP */

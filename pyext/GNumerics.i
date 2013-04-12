@@ -28,16 +28,5 @@
 #include "GNumerics.hpp"
 %}
 
-
-/***********************************************************************//**
- * @brief Computes the Li & Ma significance of an on-off measurement
- *
- * Reference: 1983ApJ...272..317L, equation (17)
- *
- * @param[in] n_on Number of counts in the on region.
- * @param[in] n_off Number of counts in the off region.
- * @param[in] alpha Ratio in background exposure on / off.
- ***************************************************************************/
-
-double li_ma_significance(const double& n_on, const double& n_off, const double& alpha);
+double gammalib::li_ma_significance(const double& n_on, const double& n_off, const double& alpha);
 
