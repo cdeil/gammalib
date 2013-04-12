@@ -72,3 +72,24 @@ double gammln(const double& x) {
     // Return result
     return result;
 }
+
+/***********************************************************************//**
+ * @brief Computes the Li & Ma significance of an on-off measurement
+ *
+ * Reference: 1983ApJ...272..317L, equation (17)
+ *
+ * @param[in] n_on Number of counts in the on region.
+ * @param[in] n_off Number of counts in the off region.
+ * @param[in] alpha Ratio in background exposure on / off.
+ ***************************************************************************/
+double li_ma_significance(const double& n_on, const double& n_off, const double& alpha) {
+
+  double n_sum = n_on + n_off;
+  double temp = (alpha + 1) / n_sum;
+  double l = n_on * std::log(n_on * temp / alpha);
+  double m = n_off * std::log(n_off * temp);
+  double sign = n_on - alpha * n_off > 0 ? 1 : -1;
+
+  double result = sign * std::sqrt(std::fabs(2 * (l + m)));
+  return result;
+}
