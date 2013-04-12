@@ -1,7 +1,7 @@
 /***************************************************************************
- *                    numerics module - Python bindings                    *
+ *       GNumerics.i - Numerical functions                                 *
  * ----------------------------------------------------------------------- *
- *  copyright (C) 2011-2013 by Juergen Knoedlseder                         *
+ *  copyright (C) 2011-2012 by Juergen Knoedlseder                         *
  * ----------------------------------------------------------------------- *
  *                                                                         *
  *  This program is free software: you can redistribute it and/or modify   *
@@ -17,35 +17,27 @@
  *  You should have received a copy of the GNU General Public License      *
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.  *
  *                                                                         *
- * ----------------------------------------------------------------------- *
- * Usage:                                                                  *
- * swig -c++ -python -Wall numerics.i                                      *
  ***************************************************************************/
 /**
- * @file numerics.i
- * @brief Numerics module
- * @author Juergen Knoedlseder
+ * @file GNumerics.i
+ * @brief Numerical functions
+ * @author Christoph Deil
  */
-%module numerics
-%feature("autodoc", "1");
-
-/* __ Headers needed for compilation _____________________________________ */
 %{
-#include "GException.hpp"
-#include "GTools.hpp"
+/* Put headers and other declarations here that are needed for compilation */
+#include "GNumerics.hpp"
 %}
 
-/* __ Include standard typemaps for vectors and strings __________________ */
-%include stl.i
 
-/* __ Include interface classes __________________________________________ */
-%import(module="gammalib.base") "GBase.i";
+/***********************************************************************//**
+ * @brief Computes the Li & Ma significance of an on-off measurement
+ *
+ * Reference: 1983ApJ...272..317L, equation (17)
+ *
+ * @param[in] n_on Number of counts in the on region.
+ * @param[in] n_off Number of counts in the off region.
+ * @param[in] alpha Ratio in background exposure on / off.
+ ***************************************************************************/
 
-/* __ Make sure that exceptions are catched ______________________________ */
-%import(module="gammalib.support") "GException.i"; 
+double li_ma_significance(const double& n_on, const double& n_off, const double& alpha);
 
-/* __ Numerics module ____________________________________________________ */
-%include "GDerivative.i"
-%include "GFunction.i"
-%include "GNumerics.i"
-%include "GIntegral.i"
