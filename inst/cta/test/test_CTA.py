@@ -177,13 +177,13 @@ class Test(GPythonTestSuite):
             self.test_try_failure("Unable to allocate GCTAEdispPerfTable from file.")
 
         # Test energy dispersion values
-        print(edisp(0.001, 0.0, 0.0))
-        self.test_value(edisp(0.0, 0.0, 0.0), 537855.359317, 1.0e-6)
-        self.test_value(edisp(0.001, 0.0, 0.0), 42, 1.0e-6)
-        self.test_value(edisp(0.0, 1.0, 0.0), 1292609.56448, 1.0e-6)
-        self.test_value(edisp(0.001, 1.0, 0.0), 22277.2429186, 1.0e-6)
-        self.test_value(edisp(0.0, 1.0, 0.01745), 1292609.56448, 1.0e-6)
-        self.test_value(edisp(0.001, 1.0, 0.01745), 22277.2429186, 1.0e-6)
+        # Parameters: edisp(logEobs, logEsrc, theta)
+        self.test_value(edisp(0.0, 0.0, 0.0), 42.8979, 1.0e-3)
+        self.test_value(edisp(0.0, 0.1, 0.0), 10.0866, 1.0e-3)
+        self.test_value(edisp(0.1, 0.0, 0.0), 11.1467, 1.0e-3)
+        self.test_value(edisp(0.1, 0.1, 0.0), 52.5215, 1.0e-3)
+
+        self.test_value(edisp(0.0, 0.0, 1.0), 42.8979, 1.0e-3)
 
 
     # Test ON/OFF analysis
