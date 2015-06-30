@@ -87,6 +87,10 @@ public:
         (*self)[name] = val;
         return;
     }
+    void __setitem__(const std::string& name, const bool& val) {
+        (*self)[name].boolean(val);
+        return;
+    }
     void __setitem__(const std::string& name, const int& val) {
         GApplicationPar& par = (*self)[name];
         if (par.type() == "r") {
